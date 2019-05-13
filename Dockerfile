@@ -25,9 +25,9 @@ RUN apt-get update
 RUN apt-get install -f -y curl gnuplot default-jre
     
 # install TeX Live and ghostscript as well as other tools
-RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf - && \
-    mv install-tl-20* install-tl && \
-    cd install-tl && \
-    echo "selected_scheme scheme-full" > profile && \
-    chmod +x install-tl
+RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf -
+RUN mv install-tl-20* install-tl
+RUN cd install-tl
+RUN echo "selected_scheme scheme-full" > profile
+RUN chmod +x install-tl
 RUN ./install-tl --repository http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/systems/texlive/tlnet/ -profile profile
