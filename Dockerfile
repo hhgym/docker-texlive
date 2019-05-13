@@ -15,19 +15,21 @@ MAINTAINER Marcel Pietschmann <marcel.pietschmann@hhgym.de>
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get clean
-RUN apt-get update 
-RUN apt-get autoclean -y
-RUN apt-get autoremove -y
+WORKDIR /home
+
+# RUN apt-get clean
+# RUN apt-get update 
+# RUN apt-get autoclean -y
+# RUN apt-get autoremove -y
 RUN apt-get update
 
 # install utilities
-RUN apt-get install -f -y curl gnuplot default-jre
+RUN apt-get install -f -y curl wget gnuplot default-jre
     
 # install TeX Live and ghostscript as well as other tools
 RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf -
 RUN mv install-tl-20* install-tl
 RUN cd install-tl
-RUN echo "selected_scheme scheme-full" > profile
+RUN echo "selected_scheme scheme-full" > texlive.profile
 RUN chmod +x install-tl
-RUN ./install-tl --repository http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/systems/texlive/tlnet/ -profile profile
+RUN ./install-tl --profile=texlive.profile
