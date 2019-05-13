@@ -23,8 +23,10 @@ WORKDIR /home
 # RUN apt-get autoremove -y
 RUN apt-get update
 
+RUN apt-get install -y apt-utils
+
 # install utilities
-RUN apt-get install -f -y curl wget gnuplot default-jre
+RUN apt-get install -f -y curl wget gnuplot default-jre tex-common texinfo equivs perl-tk perl-doc
     
 # install TeX Live and ghostscript as well as other tools
 RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf -
