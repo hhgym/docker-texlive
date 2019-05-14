@@ -12,26 +12,26 @@
 FROM ubuntu:19.04
 MAINTAINER Marcel Pietschmann <marcel.pietschmann@hhgym.de>
 
-ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /home
-
-# RUN apt-get clean
-# RUN apt-get update 
-# RUN apt-get autoclean -y
-# RUN apt-get autoremove -y
-RUN apt-get update
-
-RUN apt-get install -y apt-utils
+COPY texlive.profile /
 
 # install utilities
-RUN apt-get install -f -y curl wget gnuplot default-jre tex-common texinfo equivs perl-tk perl-doc
-    
-# install TeX Live and ghostscript as well as other tools
+RUN apt-get clean && \
+    apt-get update  && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y && \
+    apt-get update && \
+    apt-get install -y apt-utils && \
+    apt-get install -f -y curl wget gnuplot default-jre
+
+# install TeX Live
 RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf - && \
     mv install-tl-20* install-tl && \
     cd install-tl && \
     echo "selected_scheme scheme-full" > texlive.profile && \
     chmod +x install-tl && \
-    ./install-tl --profile=texlive.profile
+    ./install-tl --profile /texlive.profile
+
+ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
+CMD ["tlmgr", "--version"]
