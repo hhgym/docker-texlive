@@ -29,9 +29,9 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -f -y curl wget gnuplot default-jre tex-common texinfo equivs perl-tk perl-doc
     
 # install TeX Live and ghostscript as well as other tools
-RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf -
-RUN mv install-tl-20* install-tl
-RUN cd install-tl
-RUN echo "selected_scheme scheme-full" > texlive.profile
-RUN chmod +x install-tl
-RUN ./install-tl --profile=texlive.profile
+RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar zxf - && \
+    mv install-tl-20* install-tl && \
+    cd install-tl && \
+    echo "selected_scheme scheme-full" > texlive.profile && \
+    chmod +x install-tl && \
+    ./install-tl --profile=texlive.profile
