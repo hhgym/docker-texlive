@@ -9,7 +9,7 @@
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
 #
-FROM ubuntu:19.04
+FROM ubuntu:20.04
 MAINTAINER Marcel Pietschmann <marcel.pietschmann@hhgym.de>
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -33,5 +33,5 @@ RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz 
     chmod +x install-tl && \
     ./install-tl --profile /texlive.profile
 
-ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
 CMD ["tlmgr", "--version"]
