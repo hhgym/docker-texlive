@@ -33,5 +33,5 @@ RUN curl -sL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz 
     chmod +x install-tl && \
     ./install-tl --profile /texlive.profile
 
-ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/2021/bin/x86_64-linux:$PATH
 CMD ["tlmgr", "--version"]
