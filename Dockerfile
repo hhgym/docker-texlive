@@ -2,12 +2,14 @@
 # hhgym/docker-texlive
 #
 # This is an image with a full TeX Live installation and several
-# fonts and tools.
+# fonts and tools (gnuplot, java for arara).
 # Source: http://github.com/hhgym/docker-texlive/
 # License: GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
 # The license applies to the way the image is built, while the
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
+#
+# tex package's version: 2021-06-27
 #
 FROM ubuntu:20.04
 MAINTAINER Marcel Pietschmann <marcel.pietschmann@hhgym.de>
